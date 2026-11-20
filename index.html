@@ -1,0 +1,246 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Smart Task Scheduler - Compare four algorithms for scheduling daily tasks.">
+    <title>Smart Task Scheduler | Algorithm Explorer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="brand">ALGORITHM EXPLORER</div>
+        <h1>Smart Task Scheduler</h1>
+        <p>Plan smarter. Prioritize better. Compare algorithms.</p>
+    </header>
+
+    <main class="container">
+
+        <!-- Project Introduction -->
+        <section class="card intro">
+            <span class="tag">REAL-WORLD PROBLEM</span>
+            <h2>What is Smart Task Scheduler?</h2>
+            <p>
+                People have many tasks but limited time.
+                This application helps users schedule their daily
+                tasks based on deadlines and priority scores.
+            </p>
+            <p>
+                It compares four algorithmic approaches to find
+                a schedule that maximizes the total priority score.
+            </p>
+            <div class="objective">
+                <strong>Objective:</strong>
+                Complete as many valuable tasks as possible
+                without missing their deadlines.
+            </div>
+        </section>
+
+        <!-- Task Input -->
+        <section class="card">
+            <h2>01. Add Your Tasks</h2>
+            <p class="section-desc">
+                Enter the task name, deadline and priority.
+                Priority must be between 1 and 10.
+            </p>
+
+            <form id="taskForm">
+                <div class="form-grid">
+                    <div class="field">
+                        <label for="taskName">Task Name</label>
+                        <input
+                            type="text"
+                            id="taskName"
+                            placeholder="e.g. Complete assignment"
+                            maxlength="50"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="deadline">Deadline (Day)</label>
+                        <input
+                            type="number"
+                            id="deadline"
+                            placeholder="e.g. 2"
+                            min="1"
+                            step="1"
+                            required
+                        >
+                    </div>
+
+                    <div class="field">
+                        <label for="priority">Priority (1–10)</label>
+                        <input
+                            type="number"
+                            id="priority"
+                            placeholder="e.g. 8"
+                            min="1"
+                            max="10"
+                            step="1"
+                            required
+                        >
+                    </div>
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    + Add Task
+                </button>
+
+                <p id="message" class="message" role="status"></p>
+            </form>
+        </section>
+
+        <!-- Task List -->
+        <section class="card">
+            <div class="section-heading">
+                <div>
+                    <h2>02. Your Task List</h2>
+                    <p class="section-desc">Tasks you've entered.</p>
+                </div>
+                <button id="clearBtn" class="danger-btn" type="button">
+                    Clear All
+                </button>
+            </div>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Task Name</th>
+                            <th>Deadline</th>
+                            <th>Priority</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="taskList">
+                        <tr>
+                            <td colspan="4" class="empty">
+                                No tasks added yet.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="task-count" id="taskCount">Total tasks: 0</p>
+        </section>
+
+        <!-- Algorithms -->
+        <section class="card">
+            <h2>03. Choose an Algorithm</h2>
+            <p class="section-desc">
+                Select an algorithm to calculate your best schedule.
+            </p>
+
+            <div class="algorithm-grid">
+                <button class="algorithm-btn" data-algorithm="brute">
+                    <span>01</span>
+                    Brute Force
+                </button>
+
+                <button class="algorithm-btn" data-algorithm="greedy">
+                    <span>02</span>
+                    Greedy
+                </button>
+
+                <button class="algorithm-btn" data-algorithm="dp">
+                    <span>03</span>
+                    Dynamic Programming
+                </button>
+
+                <button class="algorithm-btn" data-algorithm="backtracking">
+                    <span>04</span>
+                    Backtracking
+                </button>
+            </div>
+        </section>
+
+        <!-- Algorithm Results -->
+        <section class="card" id="resultSection">
+            <h2>04. Algorithm Results</h2>
+
+            <div id="result">
+                <div class="empty-result">
+                    <div class="empty-icon">📊</div>
+                    <h3>No Results Yet</h3>
+                    <p>Add tasks and select an algorithm to see results.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Comparison -->
+        <section class="card">
+            <h2>05. Compare All Algorithms</h2>
+            <p class="section-desc">
+                Run all four algorithms and compare their results.
+            </p>
+
+            <button id="compareBtn" class="compare-btn" type="button">
+                Compare All Algorithms
+            </button>
+
+            <div id="comparison">
+                <p class="empty">
+                    Your comparison will appear here.
+                </p>
+            </div>
+        </section>
+
+        <!-- Algorithm Information -->
+        <section class="card">
+            <h2>06. Algorithm Complexity</h2>
+
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Algorithm</th>
+                            <th>Time Complexity</th>
+                            <th>Space Complexity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Brute Force</td>
+                            <td>O((D+1)ⁿ)</td>
+                            <td>O(n + D)</td>
+                        </tr>
+                        <tr>
+                            <td>Greedy</td>
+                            <td>O(n log n + nD)</td>
+                            <td>O(n + D)</td>
+                        </tr>
+                        <tr>
+                            <td>Dynamic Programming</td>
+                            <td>O(n × 2ⁿ)</td>
+                            <td>O(n × 2ⁿ)</td>
+                        </tr>
+                        <tr>
+                            <td>Backtracking</td>
+                            <td>O((D+1)ⁿ)</td>
+                            <td>O(n + D)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <p class="complexity-note">
+                n = Number of tasks. D = Maximum scheduling day,
+                capped at n. Exhaustive algorithms are intended
+                for small inputs.
+            </p>
+        </section>
+
+    </main>
+
+    <footer>
+        <h3>Smart Task Scheduler</h3>
+        <p>Algorithm Explorer Project | HTML, CSS & JavaScript</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
